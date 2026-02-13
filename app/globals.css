@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 244, 249, 244;
+  --background-end-rgb: 255, 255, 255;
+  --card-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 15, 28, 15;
+    --background-end-rgb: 0, 0, 0;
+    --card-rgb: 26, 50, 26;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .glass-card {
+    @apply backdrop-blur-md bg-surface-light dark:bg-surface-dark border border-primary/20 shadow-lg rounded-2xl;
+  }
+  
+  .glass-panel {
+    @apply backdrop-blur-sm bg-white/40 dark:bg-black/40 border-r border-primary/10;
+  }
+  
+  .glass-input {
+    @apply bg-white/50 dark:bg-black/30 border border-primary/20 focus:border-primary/50 focus:ring-1 focus:ring-primary/50 text-sm rounded-lg w-full p-2.5 outline-none transition-all placeholder:text-gray-400;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(76, 175, 80, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(76, 175, 80, 0.5);
+}
